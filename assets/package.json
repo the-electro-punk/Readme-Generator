@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  },
+  "name": "testme.md",
+  "description": "^C",
+  "version": "1.0.0",
+  "main": "RMgen.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ben ramey",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "readme-generator"
+  },
+  "keywords": [
+    "this",
+    "is",
+    "just",
+    "to",
+    "test",
+    "creating",
+    "a",
+    "file",
+    "with",
+    "node"
+  ]
+}
