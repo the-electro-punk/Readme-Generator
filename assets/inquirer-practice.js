@@ -3,7 +3,7 @@ const process = require('process');
 const inquirer = require('inquirer');
 const util = require('util')
 
-const writeReadMe = util.promisify(fs.writeFile)
+// const writeReadMe = util.promisify(fs.writeFile)
 
 let datarg = process.argv
 // this asks the questions from the command line to gather data
@@ -21,25 +21,36 @@ inquirer.prompt ([
         }
     },
     {
-    type:'list',
-    name:'list_question',
-    message: 'what programing language do you like?',
-    choices:['Javascript','C++','Java','python'],
-    default: 'Javascript'
-    },
+        type:'checkbox',
+        name:'check_question',
+        message: 'what will the table of contents include?',
+        choices:['Instillation','Usage','Credits','License'],
+        default: 'Instillation'
+        },
     {
-    type:'checkbox',
-    name:'checkbox_question',
-    message: 'how many programing languages do you speak?',
-    choices:['Javascript','C++','Java','python'],
-    default: 'Javascript'
+    type:'input',
+    name:'content_question',
+    message: 'what will the ReadMe file contain?',
+    validate: (answer) => {
+        if(answer === '') {
+            return 'please enter a valid name'
+        }
+        return true
+        }
     },
 ]).then(answers => {
+    const fileName = answers.input_type;
+    const table = answers.check_questions
+    const content = answers.content_question;
+
+    console.log('file name is '+ fileName)
+    console.log('known programs include '+ content)
     console.log(answers)
+    fs.writeFile(fileName, table, content, function (err) {
+        if (err) throw err;
+        console.log('saved')
+
+    })
 })
 
-
-// console.log('process is ' + datarg)
-
-
-// C:\Users\Ben\Desktop\_Coding BootCamp\_weeks lessons\week 9\node-assignment\Readme-Generator\potential-enigma\Develop\inquirer-practice.js
+// C:\Users\Ben\Desktop\_Coding BootCamp\_weeks lessons\week 9\node-assignment\Readme-Generator\assets\inquirer-practice.js
