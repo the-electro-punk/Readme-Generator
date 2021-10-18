@@ -8,12 +8,11 @@ const inquirer = require('inquirer');
 
 // this asks the questions from the command line to gather data
 inquirer.prompt (
-    {
     // this is supposed to cause the questions to loop and add more if needed
-    type: 'loop',
-    name: 'items',
-    message: 'add something else?',
-    questions: 
+    // type: 'loop',
+    // name: 'items',
+    // message: 'add something else?',
+    // questions: 
     [
 
     // it appears prompt only allows 3 questions
@@ -56,7 +55,7 @@ inquirer.prompt (
     //     message: 'is there more to add?',
     //     default: false
     // },
-]}).then(answers => {
+]).then(answers => {
     const fileName = answers.input_type;
     const table = answers.check_question;
     const content = answers.content_question;
